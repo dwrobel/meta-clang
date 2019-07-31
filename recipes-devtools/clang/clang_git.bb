@@ -48,7 +48,8 @@ def get_clang_target_arch(bb, d):
 def get_clang_experimental_target_arch(bb, d):
     return get_clang_experimental_arch(bb, d, 'TARGET_ARCH')
 
-PACKAGECONFIG ??= "compiler-rt libcplusplus shared-libs ${@bb.utils.filter('DISTRO_FEATURES', 'thin-lto full-lto', d)}"
+#TODO:dw PACKAGECONFIG ??= "compiler-rt libcplusplus shared-libs ${@bb.utils.filter('DISTRO_FEATURES', 'thin-lto full-lto', d)}"
+PACKAGECONFIG ??= "compiler-rt libcplusplus shared-libs"
 PACKAGECONFIG_class-native = ""
 PACKAGECONFIG_class-nativesdk = "thin-lto"
 
