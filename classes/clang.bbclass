@@ -64,7 +64,8 @@ OVERRIDES[vardepsexclude] += "TOOLCHAIN"
 def clang_dep_prepend(d):
     if not d.getVar('INHIBIT_DEFAULT_DEPS', False):
         if not oe.utils.inherits(d, 'allarch') :
-            return " clang-cross-${TARGET_ARCH} compiler-rt libcxx"
+            libcxx = " libcxx" if "libc++" in d.getVar("LIBCPLUSPLUS") else ""
+            return " clang-cross-${TARGET_ARCH} clang-native compiler-rt" + libcxx
     return ""
 
 BASEDEPENDS_remove_toolchain-clang_class-target = "virtual/${TARGET_PREFIX}gcc virtual/${TARGET_PREFIX}compilerlibs"
